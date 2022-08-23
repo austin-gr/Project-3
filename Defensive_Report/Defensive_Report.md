@@ -27,6 +27,8 @@ The following machines were identified on the network:
   - **Purpose**: Vulnerable WordPress Host
   - **IP Address**: 192.168.1.110
 
+![Alt text](/Images/DefensiveReport_Alerts_2.png "Netowrk Diagram")
+
 ### Description of Targets
 
 The target of this attack was: `Target 1` (192.168.1.110).
