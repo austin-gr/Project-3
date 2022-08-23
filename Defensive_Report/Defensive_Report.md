@@ -27,7 +27,7 @@ The following machines were identified on the network:
   - **Purpose**: Vulnerable WordPress Host
   - **IP Address**: 192.168.1.110
 
-![DefensiveReport_Alerts2.png](Images/DefensiveReport_Alerts_2.png "Alerts Created")
+![DefensiveReport_Network_Diagram_1.png](Images/DefensiveReport_Network_Diagram_1.png "Network Diagram")
 
 ### Description of Targets
 
@@ -38,6 +38,8 @@ Target 1 is an Apache web server and has SSH enabled, so ports 80 and 22 are pos
 ### Monitoring the Targets
 
 Traffic to these services should be carefully monitored. To this end, we have implemented the alerts below:
+
+![DefensiveReport_Alerts2.png](Images/DefensiveReport_Alerts_2.png "Alerts Created")
 
 #### Excessive HTTP Errors
 
